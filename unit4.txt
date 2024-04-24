@@ -1,0 +1,215 @@
+\\
+
+\\
+import java.util.Scanner;
+
+public final class ImmutablePoint {
+    private final double x;
+    private final double y;
+
+    public ImmutablePoint(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public double calculateDistance(ImmutablePoint other) {
+        return Math.sqrt(Math.pow(other.x - this.x, 2) + Math.pow(other.y - this.y, 2));
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Taking input for the first point
+        System.out.print("x-coordinate for first point: ");
+        double x1 = scanner.nextDouble();
+        System.out.print("y-coordinate for first point: ");
+        double y1 = scanner.nextDouble();
+        ImmutablePoint firstPoint = new ImmutablePoint(x1, y1);
+
+        // Taking input for the second point
+        System.out.print("x-coordinate for second point: ");
+        double x2 = scanner.nextDouble();
+        System.out.print("y-coordinate for second point: ");
+        double y2 = scanner.nextDouble();
+        ImmutablePoint secondPoint = new ImmutablePoint(x2, y2);
+
+        // Calculating and printing the distance
+        System.out.println("Distance: " + firstPoint.calculateDistance(secondPoint));
+
+        scanner.close();
+    }
+}
+\\
+2 and 5 are correct 
+55.1.1
+2nd
+
+55.2.1
+2nd
+
+
+56.1.1
+3rd
+
+56.1.2
+all are correct
+
+56.2.1
+4th
+
+\\
+public class TimingExample {
+    public static void main(String[] args) {
+        // Start the time measurement
+        long startTime = System.currentTimeMillis();
+
+        // Calculate the sum of numbers from 0 to 999
+        int sum = 0;
+        for (int i = 0; i < 1000; i++) {
+            sum += i;
+        }
+
+        // End the time measurement
+        long endTime = System.currentTimeMillis();
+
+        // Calculate the time taken in milliseconds
+        long timeTaken = endTime - startTime;
+
+        // Print the results
+        
+        System.out.println("Time taken in milliseconds = " + timeTaken);
+    }
+}
+
+\\
+1st option
+
+57.1.2
+import java.util.Date;
+
+public class DateExample {
+    public static void main(String[] args) {
+        // Create a new Date object representing the current time
+        Date currentDate = new Date();
+
+
+        // Get the current time in milliseconds
+        long currentTime = currentDate.getTime();
+
+        
+
+        // Sleep for 1 second
+        System.out.println("Sleeping for 1 second...");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("This thread resumed after 1 or more seconds");
+
+
+
+        
+       
+    }
+}
+
+
+
+
+
+
+
+\\
+import java.util.*;
+import java.text.*;
+
+public class DateFormatInJapan {
+    public static String getJapaneseShortDate(Date date) {
+        Locale japanLocale = Locale.JAPAN;
+        DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT, japanLocale);
+        return df.format(date);
+    }
+
+    public static void main(String[] args) {
+        // Sample Test Case
+        int year = Integer.parseInt(args[0]);
+        int month = Integer.parseInt(args[1]) - 1; // Month in Calendar starts from 0
+        int day = Integer.parseInt(args[2]);
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(year, month, day);
+        Date date = cal.getTime();
+
+        String formattedDate = getJapaneseShortDate(date);
+        System.out.println("Oct 2, 1869 in Japan is: " + formattedDate);
+    }
+}
+\\
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class SimpleDateFormatDemo {
+    public static void main(String[] args) {
+        // Define the date text
+        String dateText = "15-08-1947";
+        
+        // Define the pattern for parsing
+        String pattern = "dd-MM-yyyy";
+        
+        // Create a SimpleDateFormat object with the pattern
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+        
+        try {
+            // Parse the date text to a Date object
+            Date parsedDate = sdf.parse(dateText);
+            
+            // Print the parsed date
+            System.out.println("parsedDate : " + parsedDate);
+        } catch (ParseException e) {
+            System.out.println("Error occurred while parsing the date: " + e.getMessage());
+        }
+    }
+}
+
+\\
+5th option
+\\
+
+import java.time.*;
+import java.time.temporal.TemporalAdjusters;
+
+public class LocalDateDemo {
+    public static void main(String[] args) {
+        // Java's birthday was on 1995-05-23
+        LocalDate javaBirthday = LocalDate.of(1995, Month.MAY, 23);
+
+        // The cake was cut on next Sunday: 1995-05-28
+        LocalDate nextSunday = javaBirthday.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
+
+        System.out.println("Java's birthday was on " + javaBirthday + ", and the cake was cut on next Sunday: " + nextSunday + ".");
+    }
+}
+
+57.1.7
+3rd
+
+
+58.1.1
+1st option
+
+58.2.1
+3rd
+
+59.1.1
+1st option
